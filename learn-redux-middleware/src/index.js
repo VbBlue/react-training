@@ -8,11 +8,12 @@ import { Provider } from "react-redux";
 import rootReducer from "./modules";
 // import loggerMiddleware from "./lib/loggerMiddleware";
 import { createLogger } from "redux-logger";
+import { thunk } from "redux-thunk";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const logger = createLogger();
-const store = legacy_createStore(rootReducer, applyMiddleware(logger));
+const store = legacy_createStore(rootReducer, applyMiddleware(logger, thunk));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
